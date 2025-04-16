@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krist Fashion Store - Shop</title>
+    <link rel="stylesheet" href="shopping.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            Krist
+        </a>
+        <div class="nav-links">
+            <a href="#" class="active">Shop</a>
+            <a href="#">Collection</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="right-section">
+            <div class="user-profile">
+                <button id="profileBtn" class="cart-btn">My Profile</button>
+                <div id="userInfo" class="user-info">
+                    <p id="userEmail"></p>
+                    <button class="logout-btn" onclick="handleLogout()">Logout</button>
+                </div>
+            </div>
+            <button class="cart-btn">Cart (0)</button>
+        </div>
+    </nav>
+
+    <!-- Shop Header -->
+    <section class="shop-header">
+        <h1>Our Collection</h1>
+        <p>Discover our latest fashion items designed for your unique style</p>
+    </section>
+
+    <!-- Filter and Sort Section -->
+    <section class="filter-section">
+        <div class="filter-container">
+            <div class="filter-group">
+                <label>Categories</label>
+                <select id="category-filter">
+                    <option value="all">All Categories</option>
+                    <option value="dresses">Dresses</option>
+                    <option value="tops">Tops</option>
+                    <option value="bottoms">Bottoms</option>
+                    <option value="accessories">Accessories</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Price Range</label>
+                <select id="price-filter">
+                    <option value="all">All Prices</option>
+                    <option value="0-50">$0 - $50</option>
+                    <option value="50-100">$50 - $100</option>
+                    <option value="100-200">$100 - $200</option>
+                    <option value="200+">$200+</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Size</label>
+                <div class="size-options">
+                    <button class="size-btn">XS</button>
+                    <button class="size-btn">S</button>
+                    <button class="size-btn">M</button>
+                    <button class="size-btn">L</button>
+                    <button class="size-btn">XL</button>
+                </div>
+            </div>
+        </div>
+        <div class="sort-container">
+            <label>Sort By</label>
+            <select id="sort-options">
+                <option value="newest">Newest</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="popular">Most Popular</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products-section">
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-badge">New</div>
+                <div class="product-image">
+                    <img src="images/summer dress.webp" alt="Elegant Summer Dress">
+                    <div class="product-actions">
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        </button>
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        </button>
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Elegant Summer Dress</h3>
+                    <div class="product-price">$89.99</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="count">(42)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-badge sale">Sale</div>
+                <div class="product-image">
+                    <img src="images/blouse.jpg" alt="Casual Blouse">
+                    <div class="product-actions">
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        </button>
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        </button>
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Casual Blouse</h3>
+                    <div class="product-price">
+                        <span class="original-price">$59.99</span>
+                        <span class="sale-price">$39.99</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="count">(28)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/handbag.webp" alt="Designer Handbag">
+                    <div class="product-actions">
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        </button>
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        </button>
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Designer Handbag</h3>
+                    <div class="product-price">$129.99</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="count">(56)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/sunglasses.webp" alt="Stylish Sunglasses">
+                    <div class="product-actions">
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        </button>
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        </button>
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Stylish Sunglasses</h3>
+                    <div class="product-price">$49.99</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="count">(19)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-badge">New</div>
+                <div class="product-image">
+                    <img src="images/blazer.webp" alt="Formal Blazer">
+                    <div class="product-actions">
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        </button>
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        </button>
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Formal Blazer</h3>
+                    <div class="product-price">$149.99</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="count">(37)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="product-badge sale">Sale</div>
+                <div class="product-image">
+                    <img src="images/casual snekers.webp" alt="Casual Sneakers">
+                    <div class="product-actions">
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        </button>
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        </button>
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Casual Sneakers</h3>
+                    <div class="product-price">
+                        <span class="original-price">$79.99</span>
+                        <span class="sale-price">$59.99</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="count">(24)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/necklace.webp" alt="Statement Necklace">
+                    <div class="product-actions">
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        </button>
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        </button>
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Statement Necklace</h3>
+                    <div class="product-price">$34.99</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="count">(42)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/jeans.webp" alt="Slim Fit Jeans">
+                    <div class="product-actions">
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        </button>
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        </button>
+                        <button class="action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Slim Fit Jeans</h3>
+                    <div class="product-price">$69.99</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="count">(31)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pagination -->
+    <div class="pagination">
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn">4</button>
+        <button class="page-btn next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+    </div>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <h2>Join Our Newsletter</h2>
+        <p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email address" class="newsletter-input" required>
+            <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+    </section>
+
+   <!-- Footer Section -->
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-col">
+            <h3>Krist</h3>
+            <p>We provide quality fashion items for the modern individual. Our mission is to make you look and feel your best.</p>
+            <div class="social-icons">
+                <a href="https://facebook.com" target="_blank" aria-label="Visit our Facebook page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                </a>
+                <a href="https://instagram.com" target="_blank" aria-label="Visit our Instagram page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153.509.5.902 1.105 1.153 1.772.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772c-.5.508-1.105.902-1.772 1.153-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 1.802c-2.67 0-2.987.01-4.04.059-.977.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.88-.344 1.857-.049 1.053-.059 1.37-.059 4.04 0 2.67.01 2.987.059 4.04.045.977.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.88.3 1.857.344 1.054.049 1.37.059 4.04.059 2.67 0 2.987-.01 4.04-.059.977-.045 1.504-.207 1.857-.344.467-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.88.344-1.857.049-1.054.059-1.37.059-4.04 0-2.67-.01-2.987-.059-4.04-.045-.977-.207-1.504-.344-1.857a3.097 3.097 0 0 0-.748-1.15 3.098 3.098 0 0 0-1.15-.748c-.353-.137-.88-.3-1.857-.344-1.053-.049-1.37-.059-4.04-.059zm0 3.065a5.133 5.133 0 1 1 0 10.266 5.133 5.133 0 0 1 0-10.266zm0 8.468a3.334 3.334 0 1 0 0-6.668 3.334 3.334 0 0 0 0 6.668zm6.538-8.469a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/>
+                    </svg>
+                </a>
+                <a href="https://twitter.com" target="_blank" aria-label="Visit our Twitter page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16.99 0H20.298L13.071 8.26L21.573 19.5H14.916L9.702 12.683L3.736 19.5H0.426L8.156 10.665L0 0H6.826L11.539 6.231L16.99 0ZM15.829 17.52H17.662L5.83 1.876H3.863L15.829 17.52Z"></path>
+                    </svg>
+                </a>
+                <a href="https://youtube.com" target="_blank" aria-label="Visit our YouTube channel">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="shopping.html" class="footer-link">Shop</a>
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+            <a href="faq.html" class="footer-link">FAQs</a>
+        </div>
+        <div class="footer-col">
+            <h3>Customer Service</h3>
+            <a href="track-order.html" class="footer-link">Track Order</a>
+            <a href="return-policy.html" class="footer-link">Return Policy</a>
+            <a href="shipping-info.html" class="footer-link">Shipping Info</a>
+            <a href="size-guide.html" class="footer-link">Size Guide</a>
+            <a href="gift-cards.html" class="footer-link">Gift Cards</a>
+        </div>
+        <div class="footer-col">
+            <h3>Contact Us</h3>
+            <p>Email: <a href="mailto:info@krist.com" class="contact-link">info@krist.com</a></p>
+            <p>Phone: <a href="tel:+11234567890" class="contact-link">+1 123 456 7890</a></p>
+            <p>Address: 123 Fashion St, Style City, SC 12345</p>
+            <button id="openChatBtn" class="chat-btn">Live Chat</button>
+        </div>
+    </div>
+    
+    <!-- Newsletter Section -->
+    <div class="newsletter">
+        <h2>Join Our Newsletter</h2>
+        <p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>
+        <form id="newsletterForm" class="newsletter-form">
+            <input type="email" id="newsletterEmail" placeholder="Enter your email address" class="newsletter-input" required>
+            <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+        <div id="newsletterMessage" class="newsletter-message"></div>
+    </div>
+    
+    <div class="copyright">
+        <p>&copy; <span id="currentYear"></span> Krist. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-service.html">Terms of Service</a>
+            <a href="sitemap.html">Sitemap</a>
+        </div>
+    </div>
+    
+    <!-- Chat Widget (Hidden by default) -->
+    <div id="chatWidget" class="chat-widget">
+        <div class="chat-header">
+            <h3>Live Chat Support</h3>
+            <button id="closeChatBtn" class="close-chat-btn">×</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message support">
+                <span class="message-content">Hello! How can we help you today?</span>
+            </div>
+        </div>
+        <form id="chatForm" class="chat-form">
+            <input type="text" id="chatInput" placeholder="Type your message..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</footer>
+</body>
+</html>
